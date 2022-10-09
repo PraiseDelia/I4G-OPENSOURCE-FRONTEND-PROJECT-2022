@@ -19,6 +19,7 @@ module.exports = {
       "neutral-color-700": "#4B4E61",
       "neutral-color-600": "#717591",
       "neutral-color-500": "#A1A4B6",
+      "neutral-color-300": "#D5D6DE",
       "neutral-color-400": "#C7C8D3",
       "neutral-color-50": "#FAFAFB",
       inherit: colors.inherit,

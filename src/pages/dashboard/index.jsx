@@ -1,29 +1,36 @@
 // import styled from "styled-components";
-import menu from "../../atoms/Dashboard/menu.png";
-import mobileLogo from "../../atoms/Dashboard/mobile-logo.png";
+
+import "./style.css";
 import mac from "../../atoms/Dashboard/mac.png";
 import rightArrow from "../../atoms/Dashboard/right-arrow.png";
 import Button from "../../atoms/Button";
 import { useState } from "react";
 import AtomCard from "../../atoms/Card/AtomCard";
+import product1 from "../../atoms/Dashboard/product1.png";
+import product2 from "../../atoms/Dashboard/product2.png";
+import product3 from "../../atoms/Dashboard/product3.png";
+import MoleculeCard from "../../molecules/card/MoleculeCard";
+import TheHeader from "../../molecules/TheHeader";
+
 const Index = () => {
   const categories = ["All", "Laptops", "Phone", "Merch", "Game"];
   const [indexOfActiveBtn, setIndexOfActiveBtn] = useState(0);
+  const products = [
+    { image: product1, title: "Workspace Equipment", price: "₦25,000.00" },
+    { image: product2, title: "Gaming Pad", price: "₦100,000.00" },
+    { image: product3, title: "Workspace Equipment", price: "₦1,550,000.00" },
+  ];
+  const userName = "Nora";
   const displayAsActive = (index) => {
     setIndexOfActiveBtn(index);
   };
   return (
     <div className="w-full">
-      <div className="px-5 py-11 flex items-center">
-        <div className="">
-          <img src={mobileLogo} alt="Logo" />
-        </div>
-        <div className="p-4 rounded-xl ml-auto border border-[#0f27bd80]">
-          <img src={menu} alt="hamburger menu" />
-        </div>
-      </div>
+      <TheHeader />
       <div className="px-5 mb-4">
-        <h4 className="font-medium mb-2 text-neutral-color-800">Hey Nora👋🏽</h4>
+        <h4 className="font-medium mb-2 text-neutral-color-800">
+          Hey {userName}👋🏽
+        </h4>
         <h3 className="font-bold text-xl text-neutral-color-900">
           Explore Tech Gadgets
         </h3>
@@ -46,7 +53,7 @@ const Index = () => {
         </AtomCard>
       </section>
       <section className="">
-        <div className="flex items-center px-5">
+        <div className="flex items-center px-5 mb-4">
           <h4 className="font-bold text-lg text-neutral-color-900">
             Categories
           </h4>
@@ -59,7 +66,7 @@ const Index = () => {
             />
           </div>
         </div>
-        <div className="flex flex-nowrap w-full overflow-x-auto pl-5 mb-6">
+        <div className="flex flex-nowrap w-full overflow-x-auto pl-5 mb-6 no_scrollbar">
           {categories.map((category, index) => (
             <div key={index} className="mr-4 flex items-center justify-center">
               <Button
@@ -73,6 +80,21 @@ const Index = () => {
                 {category}
               </Button>
             </div>
+          ))}
+        </div>
+        <div>
+          {products.map((product, index) => (
+            <MoleculeCard image={product.image}>
+              <div>
+                <h3 className="text-neutral-color-700 text-lg font-semibold">
+                  {product.title}
+                </h3>
+                <p className="text-neutral-color-900 font-bold text-xl">
+                  {product.price}
+                </p>
+              </div>
+              <div></div>
+            </MoleculeCard>
           ))}
         </div>
       </section>
