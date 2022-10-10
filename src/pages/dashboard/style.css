@@ -1,3 +1,11 @@
 .no_scrollbar::-webkit-scrollbar {
   width: 0;
 }
+
+.banner_img {
+  flex-basis: 45%;
+}
+
+.banner_text {
+  flex-basis: 55%;
+}

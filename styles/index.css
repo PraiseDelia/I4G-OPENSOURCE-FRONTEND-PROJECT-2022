@@ -1,4 +1,6 @@
 @import url("http://fonts.cdnfonts.com/css/cabinet-grotesk");
+@import url("http://fonts.cdnfonts.com/css/campton");
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@100;200;300;400;500;600;800;900&display=swap);
 
 @tailwind base;
 @tailwind components;
@@ -12,4 +14,12 @@ h4,
 p,
 button {
   font-family: "Cabinet Grotesk", sans-serif;
+}
+
+.campton {
+  font-family: "Campton", sans-serif;
+}
+
+.lato {
+  font-family: "Lato", sans-serif;
 }

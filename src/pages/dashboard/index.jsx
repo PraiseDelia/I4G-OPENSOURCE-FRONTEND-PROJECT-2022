@@ -1,103 +1,58 @@
-// import styled from "styled-components";
-
-import "./style.css";
-import mac from "../../atoms/Dashboard/mac.png";
-import rightArrow from "../../atoms/Dashboard/right-arrow.png";
-import Button from "../../atoms/Button";
-import { useState } from "react";
-import AtomCard from "../../atoms/Card/AtomCard";
-import product1 from "../../atoms/Dashboard/product1.png";
-import product2 from "../../atoms/Dashboard/product2.png";
-import product3 from "../../atoms/Dashboard/product3.png";
-import MoleculeCard from "../../molecules/card/MoleculeCard";
+import SideNav from "../../molecules/SideBar";
+import { Outlet } from "react-router-dom";
 import TheHeader from "../../molecules/TheHeader";
-
+import searchIcon from "../../atoms/Dashboard/search-icon.png";
+import notification from "../../atoms/Dashboard/notification.png";
+import unreadNotification from "../../atoms/Dashboard/unread-notification.png";
+import avatar from "../../atoms/Dashboard/avatar.png";
 const Index = () => {
-  const categories = ["All", "Laptops", "Phone", "Merch", "Game"];
-  const [indexOfActiveBtn, setIndexOfActiveBtn] = useState(0);
-  const products = [
-    { image: product1, title: "Workspace Equipment", price: "₦25,000.00" },
-    { image: product2, title: "Gaming Pad", price: "₦100,000.00" },
-    { image: product3, title: "Workspace Equipment", price: "₦1,550,000.00" },
-  ];
   const userName = "Nora";
-  const displayAsActive = (index) => {
-    setIndexOfActiveBtn(index);
-  };
+
   return (
-    <div className="w-full">
-      <TheHeader />
-      <div className="px-5 mb-4">
-        <h4 className="font-medium mb-2 text-neutral-color-800">
-          Hey {userName}👋🏽
-        </h4>
-        <h3 className="font-bold text-xl text-neutral-color-900">
-          Explore Tech Gadgets
-        </h3>
+    <div className="flex">
+      <div className="hidden lg:block w-3/12">
+        <SideNav />
       </div>
-      <section className="px-5 mb-8">
-        <AtomCard style="flex bg-neutral-color-900">
-          <div className="basis-3/5 flex justify-center items-center">
-            <div className="w-full py-7 px-4">
-              <h4 className="font-bold leading-[26px] mb-2.5 text-neutral-color-50">
-                Buy & Sell Affordable Products{" "}
+
+      <div className="w-full lg:w-9/12 lg:pt-14 lg:pl-10 lg:pr-16">
+        <div className="w-full">
+          <div className="lg:hidden">
+            <TheHeader />
+          </div>
+          <div className="flex w-full items-end mx-5 sm:mx-10 md:mx-20 lg:mx-0 mb-4 lg:mb-12">
+            <div className="">
+              <h4 className="font-medium mb-2 text-neutral-color-800 sm:text-lg md:text-xl">
+                Hey {userName}👋🏽
               </h4>
-              <p className="font-medium text-sm leading-6 text-neutral-color-400">
-                Connect with other creatives around world.
-              </p>
+              <h3 className="font-bold text-xl sm:text-2xl md:text-3xl lg:text-2xl text-neutral-color-900">
+                Explore Tech Gadgets
+              </h3>
             </div>
-          </div>
-          <div className="basis-2/5">
-            <img src={mac} alt="a MAC" className="w-full h-full rounded-lg" />
-          </div>
-        </AtomCard>
-      </section>
-      <section className="">
-        <div className="flex items-center px-5 mb-4">
-          <h4 className="font-bold text-lg text-neutral-color-900">
-            Categories
-          </h4>
-          <div className="flex items-center ml-auto">
-            <p className="text-neutral-color-600">See All</p>
-            <img
-              src={rightArrow}
-              alt="a right arrow"
-              className="w-2 h-3 ml-3"
-            />
-          </div>
-        </div>
-        <div className="flex flex-nowrap w-full overflow-x-auto pl-5 mb-6 no_scrollbar">
-          {categories.map((category, index) => (
-            <div key={index} className="mr-4 flex items-center justify-center">
-              <Button
-                onFocus={() => displayAsActive(index)}
-                style={`${
-                  index === indexOfActiveBtn
-                    ? "bg-primary-color-500 text-neutral-color-50"
-                    : "bg-transparent border-neutral-color-500 text-neutral-color-700"
-                } hover:bg-primary-color-400 hover:text-neutral-color-50`}
-              >
-                {category}
-              </Button>
-            </div>
-          ))}
-        </div>
-        <div>
-          {products.map((product, index) => (
-            <MoleculeCard image={product.image}>
-              <div>
-                <h3 className="text-neutral-color-700 text-lg font-semibold">
-                  {product.title}
-                </h3>
-                <p className="text-neutral-color-900 font-bold text-xl">
-                  {product.price}
-                </p>
+            <div className="ml-auto flex items-center">
+              <div className="mr-6 flex px-3 pt-2 xl:p-3 border border-neutral-color-500 rounded-lg items-center">
+                <img src={searchIcon} alt="search" className="mr-2 w-5 h-5" />
+                <input
+                  type="search"
+                  className="focus:outline-none text-neutral-color-600"
+                  placeholder="Seaarch for gadgets"
+                />
               </div>
-              <div></div>
-            </MoleculeCard>
-          ))}
+              <button className="rounded-full p-5 bg-primary-color-50 mr-6">
+                <div className="relative flex justify-center items-center">
+                  <img src={notification} alt="notification" />
+                  <div className="absolute top-0 right-0 ">
+                    <img src={unreadNotification} alt="unread notification" />
+                  </div>
+                </div>
+              </button>
+              <div className="">
+                <img src={avatar} alt="avatar" />
+              </div>
+            </div>
+          </div>
+          <Outlet />
         </div>
-      </section>
+      </div>
     </div>
   );
 };
