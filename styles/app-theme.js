@@ -1,6 +1,7 @@
 const appTheme = {
   colors: {
     primary: "#F2994A",
+
     secondary: "#4E598C",
     grey2: "#4F4F4F",
     light: "#BDBDBD",
